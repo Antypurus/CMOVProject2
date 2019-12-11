@@ -49,6 +49,14 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[1.68.1, )"
+            },
+            "SkiaSharp.Views.Forms": {
+              "target": "Package",
+              "version": "[1.68.1, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.3.1, )"

@@ -1,0 +1,12 @@
+C:\Users\craky\Desktop\Xamarin\Weather App\bin\Debug\netstandard2.0\Weather App.deps.json
+C:\Users\craky\Desktop\Xamarin\Weather App\bin\Debug\netstandard2.0\Weather App.dll
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Weather App.csprojAssemblyReference.cache
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Views\ItemsPage.xaml.g.cs
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Views\MenuPage.xaml.g.cs
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Views\NewItemPage.xaml.g.cs
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Weather App.AssemblyInfoInputs.cache
+C:\Users\craky\Desktop\Xamarin\Weather App\obj\Debug\netstandard2.0\Weather App.AssemblyInfo.cs
