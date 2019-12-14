@@ -12,6 +12,8 @@ namespace WeatherIO
 {
     public partial class MainPage : ContentPage
     {
+        string data = WeatherIO.Backend.WeatherAPI.GetCityWeather("London", "uk").Temperature.ToString();
+
         public MainPage()
         {
             InitializeComponent();
@@ -32,15 +34,14 @@ namespace WeatherIO
             SKPaint paint = new SKPaint
             {
                 Style = SKPaintStyle.Stroke,
-                Color = Color.Red.ToSKColor(),
-                StrokeWidth = 25
+                StrokeWidth = 1,
+                FakeBoldText = true,
+                Color = SKColors.Blue
             };
 
-            canvas.DrawCircle(info.Width / 2, info.Height / 2, 100, paint);
-
-            paint.Style = SKPaintStyle.Fill;
-            paint.Color = SKColors.Blue;
-            canvas.DrawCircle(args.Info.Width / 2, args.Info.Height / 2, 100, paint);
+            float y = info.Height / 2;
+            float x = info.Width / 2;
+            canvas.DrawText(data, 0, y, paint);
         }
     }
 }

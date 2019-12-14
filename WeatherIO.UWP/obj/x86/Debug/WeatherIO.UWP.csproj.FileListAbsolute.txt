@@ -69,3 +69,4 @@ C:\Users\craky\Desktop\Xamarin\WeatherIO.UWP\obj\x86\Debug\qualifiers.txt.interm
 C:\Users\craky\Desktop\Xamarin\WeatherIO.UWP\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\craky\Desktop\Xamarin\WeatherIO.UWP\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\craky\Desktop\Xamarin\WeatherIO.UWP\obj\x86\Debug\.winmd_cache\$Microsoft.Graphics.Canvas.winmd_636160715180000000.json
+C:\Users\craky\Desktop\Xamarin\WeatherIO.UWP\bin\x86\Debug\Newtonsoft.Json.dll
