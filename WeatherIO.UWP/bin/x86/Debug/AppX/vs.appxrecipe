@@ -104,7 +104,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\craky\Desktop\Xamarin\WeatherIO\bin\Debug\netstandard2.0\WeatherIO.dll">
       <PackagePath>WeatherIO.dll</PackagePath>
-      <Modified>2019-12-14T18:29:55.730</Modified>
+      <Modified>2019-12-14T18:57:26.058</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Microsoft\Xamarin\NuGet\win2d.uwp\1.20.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
