@@ -1,0 +1,1 @@
+C:\Users\craky\Desktop\Xamarin\WeatherIO.UWP\WeatherIO.UWP.csproj;x86

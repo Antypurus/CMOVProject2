@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO.UWP\\WeatherIO.UWP.csproj": {}
+    "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO.UWP\\WeatherIO.UWP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO.UWP\\WeatherIO.UWP.csproj": {
+    "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO.UWP\\WeatherIO.UWP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO.UWP\\WeatherIO.UWP.csproj",
+        "projectUniqueName": "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO.UWP\\WeatherIO.UWP.csproj",
         "projectName": "WeatherIO.UWP",
-        "projectPath": "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO.UWP\\WeatherIO.UWP.csproj",
+        "projectPath": "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO.UWP\\WeatherIO.UWP.csproj",
         "packagesPath": "C:\\Users\\craky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO.UWP\\obj\\",
+        "outputPath": "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO.UWP\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -33,8 +33,8 @@
         "frameworks": {
           "uap10.0.16299": {
             "projectReferences": {
-              "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO\\WeatherIO.csproj": {
-                "projectPath": "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO\\WeatherIO.csproj"
+              "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO\\WeatherIO.csproj": {
+                "projectPath": "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO\\WeatherIO.csproj"
               }
             }
           }
@@ -45,7 +45,15 @@
           "dependencies": {
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
-              "version": "[6.1.9, )"
+              "version": "[6.2.9, )"
+            },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[1.68.1, )"
+            },
+            "SkiaSharp.Views.Forms": {
+              "target": "Package",
+              "version": "[1.68.1, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
@@ -53,7 +61,7 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.3.0.908675, )"
+              "version": "[4.4.0.991265, )"
             }
           },
           "imports": [
@@ -87,14 +95,14 @@
         }
       }
     },
-    "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO\\WeatherIO.csproj": {
+    "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO\\WeatherIO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO\\WeatherIO.csproj",
+        "projectUniqueName": "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO\\WeatherIO.csproj",
         "projectName": "WeatherIO",
-        "projectPath": "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO\\WeatherIO.csproj",
+        "projectPath": "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO\\WeatherIO.csproj",
         "packagesPath": "C:\\Users\\craky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\craky\\Desktop\\holder\\WeatherIO\\WeatherIO\\obj\\",
+        "outputPath": "C:\\Users\\craky\\Desktop\\Xamarin\\WeatherIO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -132,13 +140,21 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "SkiaSharp": {
+              "target": "Package",
+              "version": "[1.68.1, )"
+            },
+            "SkiaSharp.Views.Forms": {
+              "target": "Package",
+              "version": "[1.68.1, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.3.1, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.3.0.908675, )"
+              "version": "[4.4.0.991265, )"
             }
           },
           "imports": [
