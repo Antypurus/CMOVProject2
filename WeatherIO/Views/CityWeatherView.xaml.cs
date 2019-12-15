@@ -5,12 +5,14 @@ using Xamarin.Forms.Xaml;
 namespace WeatherIO.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CityWeather : ContentPage
+    public partial class CityWeatherView : ContentPage
     {
-        public CityWeather()
+        public CityWeatherView(string city, string country)
         {
             InitializeComponent();
-            BindingContext = new CityWeatherViewModel();
+            var vm = new CityWeatherViewModel(city, country);
+            BindingContext = vm;
+            vm.UpdateWeather();
         }
     }
 }

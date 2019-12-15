@@ -23,10 +23,17 @@ namespace Business.WeatherAPI
             string uri = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=metric&appid=" + WEATHER_API_KEY;
             JObject response = JObject.Parse(HTTPRequests.Get(uri));
 
+            JArray desc = (JArray)response.GetValue("weather");
             JObject main = (JObject)response.GetValue("main");
             JObject wind = (JObject)response.GetValue("wind");
 
             WeatherConditions weather = new WeatherConditions();
+
+            foreach (JObject item in desc)
+            {
+                weather.Description = (string)item.GetValue("description");
+            }
+
             weather.Temperature = (float)main.GetValue("temp");
             weather.Pressure = (float)main.GetValue("pressure");
             weather.Humidity = (float)main.GetValue("humidity");

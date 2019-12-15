@@ -2,6 +2,8 @@
 {
     public class WeatherConditions
     {
+        public string Description { get; set; }
+        
         public float Temperature { get; set; }
 
         public float Humidity { get; set; }

@@ -11,7 +11,7 @@ namespace WeatherIO
         {
             InitializeComponent();
 
-            MainPage = new CityWeather();
+            MainPage = new NavigationPage(new CityWeatherView("Lisboa", "Portugal"));
         }
 
         protected override void OnStart()
