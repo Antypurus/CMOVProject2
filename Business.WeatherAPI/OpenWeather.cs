@@ -1,12 +1,11 @@
 ﻿using Domain.Models;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace WeatherIO.Backend
+namespace Business.WeatherAPI
 {
-    struct WeatherForecast
+
+    public struct WeatherForecast
     {
         public float min_temp;
         public float max_temp;
@@ -15,7 +14,7 @@ namespace WeatherIO.Backend
         public float Humidity;
     }
 
-    class WeatherAPI
+    public class OpenWeather
     {
         private const string WEATHER_API_KEY = "584f4b630abaaa8f48b7c5ffb8102a27";
 
@@ -27,14 +26,12 @@ namespace WeatherIO.Backend
             JObject main = (JObject)response.GetValue("main");
             JObject wind = (JObject)response.GetValue("wind");
 
-            WeatherConditions weather = new WeatherConditions
-            {
-                Temperature = (float)main.GetValue("temp"),
-                Pressure = (float)main.GetValue("pressure"),
-                Humidity = (float)main.GetValue("humidity"),
-                WindSpeed = (float)wind.GetValue("speed"),
-                WindDegree = (float)wind.GetValue("deg")
-            };
+            WeatherConditions weather = new WeatherConditions();
+            weather.Temperature = (float)main.GetValue("temp");
+            weather.Pressure = (float)main.GetValue("pressure");
+            weather.Humidity = (float)main.GetValue("humidity");
+            weather.WindSpeed = (float)wind.GetValue("speed");
+            weather.WindDegree = (float)wind.GetValue("deg");
 
             return weather;
         }
@@ -47,7 +44,7 @@ namespace WeatherIO.Backend
             JObject response = JObject.Parse(HTTPRequests.Get(uri));
             JArray forecasts = (JArray)response.GetValue("list");
 
-            foreach(JObject forecast in forecasts)
+            foreach (JObject forecast in forecasts)
             {
                 JObject wind = (JObject)forecast.GetValue("wind");
                 JObject main = (JObject)forecast.GetValue("main");

@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WeatherIO.Views;
 
 namespace WeatherIO
 {
@@ -10,7 +11,7 @@ namespace WeatherIO
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new CityWeather();
         }
 
         protected override void OnStart()

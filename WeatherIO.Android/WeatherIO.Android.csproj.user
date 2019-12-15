@@ -2,5 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <AndroidDesignerPreferredTheme>Theme.AppCompat.Light.NoActionBar</AndroidDesignerPreferredTheme>
+    <SelectedDevice>Pixel_2_API_27</SelectedDevice>
+    <DefaultDevice>Pixel_2_API_27</DefaultDevice>
   </PropertyGroup>
 </Project>

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Weather.Application.Services</AssemblyName>
+    <RootNamespace>Weather.Application.Services</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Business.WeatherAPI\Business.WeatherAPI.csproj" />
+  </ItemGroup>
+
+</Project>
