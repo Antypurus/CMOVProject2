@@ -4,9 +4,9 @@
     {
         public string Date { get; set; }
 
-        public float MinTemp { get; set; }
+        public int MinTemp { get; set; }
 
-        public float MaxTemp { get; set; }
+        public int MaxTemp { get; set; }
 
         public float WindSpeed { get; set; }
 

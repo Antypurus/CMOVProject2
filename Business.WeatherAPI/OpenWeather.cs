@@ -22,11 +22,12 @@ namespace Business.WeatherAPI
             foreach (JObject item in desc)
             {
                 weather.Description = (string)item.GetValue("description");
+                weather.Icon = (string)item.GetValue("icon");
             }
 
-            weather.Temperature = (float)main.GetValue("temp");
-            weather.MinTemp = (float)main.GetValue("temp_min");
-            weather.MaxTemp = (float)main.GetValue("temp_max");
+            weather.Temperature = (int)main.GetValue("temp");
+            weather.MinTemp = (int)main.GetValue("temp_min");
+            weather.MaxTemp = (int)main.GetValue("temp_max");
             weather.Pressure = (float)main.GetValue("pressure");
             weather.Humidity = (float)main.GetValue("humidity");
             weather.WindSpeed = (float)wind.GetValue("speed");
@@ -52,8 +53,8 @@ namespace Business.WeatherAPI
                 WeatherForecast weatherForecast = new WeatherForecast();
 
                 weatherForecast.Date = (string)forecast.GetValue("dt_txt");
-                weatherForecast.MinTemp = (float)main.GetValue("temp_min");
-                weatherForecast.MaxTemp = (float)main.GetValue("temp_max");
+                weatherForecast.MinTemp = (int)main.GetValue("temp_min");
+                weatherForecast.MaxTemp = (int)main.GetValue("temp_max");
                 weatherForecast.Humidity = (float)main.GetValue("humidity");
                 weatherForecast.WindDegree = (float)wind.GetValue("deg");
                 weatherForecast.WindSpeed = (float)wind.GetValue("speed");

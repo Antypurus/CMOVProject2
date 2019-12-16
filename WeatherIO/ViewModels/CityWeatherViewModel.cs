@@ -22,6 +22,7 @@ namespace WeatherIO.ViewModels
         private string _pressure;
         private string _minTemp;
         private string _maxTemp;
+        private string _icon;
         private List<WeatherForecast> _forecasts;
 
         public CityWeatherViewModel(string city, string country)
@@ -39,6 +40,8 @@ namespace WeatherIO.ViewModels
         public string CityCountry => City + ", " + Country;
 
         public DateTime Today => _today;
+
+        public string TodayDate => Today.ToString("D");
 
         public string Description
         {
@@ -120,6 +123,16 @@ namespace WeatherIO.ViewModels
             }
         }
 
+        public string Icon
+        {
+            get => _icon;
+            set
+            {
+                _icon = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public List<WeatherForecast> Forecasts
         {
             get => _forecasts;
@@ -141,56 +154,121 @@ namespace WeatherIO.ViewModels
             WindSpeed = $"{weather.WindSpeed.ToString()} m/s";
             WindDegree = $"{weather.WindDegree.ToString()} °";
             Pressure = $"{weather.Pressure.ToString()} hpa";
-            MinTemp = $"{Math.Round(weather.MinTemp).ToString()}°";
-            MaxTemp = $"{Math.Round(weather.MaxTemp).ToString()}°";
+            MinTemp = $"{weather.MinTemp.ToString()}°";
+            MaxTemp = $"{weather.MaxTemp.ToString()}°";
+            Icon = "http://openweathermap.org/img/wn/" + weather.Icon + "@2x.png";
 
-            List<WeatherForecast> forecastOneDay = new List<WeatherForecast>();
-            List<WeatherForecast> forecastTwoDays = new List<WeatherForecast>();
-            List<WeatherForecast> forecastThreeDays = new List<WeatherForecast>();
-            List<WeatherForecast> forecastFourDays = new List<WeatherForecast>();
-            List<WeatherForecast> forecastFiveDays = new List<WeatherForecast>();
+            List<WeatherForecast> forecastListOneDay = new List<WeatherForecast>();
+            List<WeatherForecast> forecastListTwoDays = new List<WeatherForecast>();
+            List<WeatherForecast> forecastListThreeDays = new List<WeatherForecast>();
+            List<WeatherForecast> forecastListFourDays = new List<WeatherForecast>();
+            List<WeatherForecast> forecastListFiveDays = new List<WeatherForecast>();
+
+            var todayOneDay = Today.AddDays(1);
+            var todayTwoDays = Today.AddDays(2);
+            var todayThreeDays = Today.AddDays(3);
+            var todayFourDays = Today.AddDays(4);
+            var todayFiveDays = Today.AddDays(5);
 
             foreach (WeatherForecast forecast in weatherForecast)
             {
                 var dt = DateTime.ParseExact(forecast.Date, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                if ((Today.AddDays(1) - dt).TotalMinutes > 0)
+                if ((todayOneDay - dt).TotalMinutes > 0)
                 {
-                    forecastOneDay.Add(forecast);
+                    forecastListOneDay.Add(forecast);
                 }
-                else if ((Today.AddDays(2) - dt).TotalMinutes > 0)
+                else if ((todayTwoDays - dt).TotalMinutes > 0)
                 {
-                    forecastTwoDays.Add(forecast);
+                    forecastListTwoDays.Add(forecast);
                 }
-                else if ((Today.AddDays(3) - dt).TotalMinutes > 0)
+                else if ((todayThreeDays - dt).TotalMinutes > 0)
                 {
-                    forecastThreeDays.Add(forecast);
+                    forecastListThreeDays.Add(forecast);
                 }
-                else if ((Today.AddDays(4) - dt).TotalMinutes > 0)
+                else if ((todayFourDays - dt).TotalMinutes > 0)
                 {
-                    forecastFourDays.Add(forecast);
+                    forecastListFourDays.Add(forecast);
                 }
-                else if ((Today.AddDays(5) - dt).TotalMinutes > 0)
+                else if ((todayFiveDays - dt).TotalMinutes > 0)
                 {
-                    forecastFiveDays.Add(forecast);
+                    forecastListFiveDays.Add(forecast);
                 }
                 else break;
             }
 
-            float maxTempOneDay = forecastOneDay.Max(f => f.MaxTemp);
-            float maxTempTwoDays = forecastTwoDays.Max(f => f.MaxTemp);
-            float maxTempThreeDays = forecastThreeDays.Max(f => f.MaxTemp);
-            float maxTempFourDays = forecastFourDays.Max(f => f.MaxTemp);
-            float maxTempFiveDays = forecastFiveDays.Max(f => f.MaxTemp);
+            //Get Min Temperature From One Day
+            int minTempOneDay = forecastListOneDay.Min(f => f.MinTemp);
+            int minTempTwoDays = forecastListTwoDays.Min(f => f.MinTemp);
+            int minTempThreeDays = forecastListThreeDays.Min(f => f.MinTemp);
+            int minTempFourDays = forecastListFourDays.Min(f => f.MinTemp);
+            int minTempFiveDays = forecastListFiveDays.Min(f => f.MinTemp);
 
-            float minTempOneDay = forecastOneDay.Min(f => f.MinTemp);
-            float minTempTwoDays = forecastTwoDays.Min(f => f.MinTemp);
-            float minTempThreeDays = forecastThreeDays.Min(f => f.MinTemp);
-            float minTempFourDays = forecastFourDays.Min(f => f.MinTemp);
-            float minTempFiveDays = forecastFiveDays.Min(f => f.MinTemp);
+            //Get Max Temperature From One Day
+            int maxTempOneDay = forecastListOneDay.Max(f => f.MaxTemp);
+            int maxTempTwoDays = forecastListTwoDays.Max(f => f.MaxTemp);
+            int maxTempThreeDays = forecastListThreeDays.Max(f => f.MaxTemp);
+            int maxTempFourDays = forecastListFourDays.Max(f => f.MaxTemp);
+            int maxTempFiveDays = forecastListFiveDays.Max(f => f.MaxTemp);
 
-            var query = forecastOneDay.GroupBy(f => f.Icon)
-                .Select(group => new { Location = group.Key, Count = group.Count() })
-                .OrderByDescending(x => x.Count);
+            //Get Most Ocurring Icon For Most Accurate Weather Icon
+            string getMostOcurringIcon(List<WeatherForecast> forecastsList)
+            {
+                var query = forecastListOneDay.GroupBy(f => f.Icon)
+                    .Select(group => new { icon = group.Key, Count = group.Count() })
+                    .OrderByDescending(x => x.Count);
+                var item = query.First();
+                return item.icon;
+            }
+
+            string iconOneDay = getMostOcurringIcon(forecastListOneDay);
+            string iconTwoDays = getMostOcurringIcon(forecastListTwoDays);
+            string iconThreeDays = getMostOcurringIcon(forecastListThreeDays);
+            string iconFourDays = getMostOcurringIcon(forecastListFourDays);
+            string iconFiveDays = getMostOcurringIcon(forecastListFiveDays);
+
+            string iconUrl(string icon)
+            {
+                return "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+            }
+
+            List<WeatherForecast> finalForecasts = new List<WeatherForecast>();
+
+            WeatherForecast forecastOneDay = new WeatherForecast();
+            forecastOneDay.Date = "Tomorrow";
+            forecastOneDay.MinTemp = minTempOneDay;
+            forecastOneDay.MaxTemp = maxTempOneDay;
+            forecastOneDay.Icon = iconUrl(iconOneDay);
+            finalForecasts.Add(forecastOneDay);
+
+            WeatherForecast forecastTwoDays = new WeatherForecast();
+            forecastTwoDays.Date = todayTwoDays.DayOfWeek.ToString();
+            forecastTwoDays.MinTemp = minTempTwoDays;
+            forecastTwoDays.MaxTemp = maxTempTwoDays;
+            forecastTwoDays.Icon = iconUrl(iconTwoDays);
+            finalForecasts.Add(forecastTwoDays);
+
+            WeatherForecast forecastThreeDays = new WeatherForecast();
+            forecastThreeDays.Date = todayThreeDays.DayOfWeek.ToString();
+            forecastThreeDays.MinTemp = minTempThreeDays;
+            forecastThreeDays.MaxTemp = maxTempThreeDays;
+            forecastThreeDays.Icon = iconUrl(iconThreeDays);
+            finalForecasts.Add(forecastThreeDays);
+
+            WeatherForecast forecastFourDays = new WeatherForecast();
+            forecastFourDays.Date = todayFourDays.DayOfWeek.ToString();
+            forecastFourDays.MinTemp = minTempFourDays;
+            forecastFourDays.MaxTemp = maxTempFourDays;
+            forecastFourDays.Icon = iconUrl(iconFourDays);
+            finalForecasts.Add(forecastFourDays);
+
+            WeatherForecast forecastFiveDays = new WeatherForecast();
+            forecastFiveDays.Date = todayFiveDays.DayOfWeek.ToString();
+            forecastFiveDays.MinTemp = minTempFiveDays;
+            forecastFiveDays.MaxTemp = maxTempFiveDays;
+            forecastFiveDays.Icon = iconUrl(iconFiveDays);
+            finalForecasts.Add(forecastFiveDays);
+
+            Forecasts = finalForecasts;
         }
     }
 }

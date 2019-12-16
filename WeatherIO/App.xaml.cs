@@ -12,11 +12,11 @@ namespace WeatherIO
             InitializeComponent();
 
             Resources = new ResourceDictionary();
-            Resources.Add("grey", Color.FromHex("D8DDF1"));
+            Resources.Add("purple", Color.FromHex("7454C7"));
             Resources.Add("primaryDarkGreen", Color.FromHex("6FA22E"));
 
             var nav = new NavigationPage(new CityWeatherView("Porto", "PT"));
-            nav.BarBackgroundColor = (Color)App.Current.Resources["grey"];
+            nav.BarBackgroundColor = (Color)App.Current.Resources["purple"];
             nav.BarTextColor = Color.White;
 
             MainPage = nav;

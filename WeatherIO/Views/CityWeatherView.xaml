@@ -15,19 +15,19 @@
         <Image Source="overlay.png" Aspect="Fill" HeightRequest="250" VerticalOptions="StartAndExpand"/>
         <StackLayout Orientation="Vertical" Margin="0,0,20,50" HorizontalOptions="Center" VerticalOptions="Center">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Image Source="weather.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center"/>
+                <Image Source="{Binding Path=Icon}" Margin="0,15,0,0" WidthRequest="80" HeightRequest="80" VerticalOptions="Center"/>
                 <Label Text="{Binding Path=Temperature}" TextColor="White" FontSize="70" FontAttributes="Bold" VerticalOptions="Center"/>
                 <Label Text="°C" TextColor="White" FontSize="34" VerticalOptions="Center"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,10">
-                <Label Text="{Binding Path=MaxTemp}" TextColor="Orange" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,0">
+                <Label Text="{Binding Path=MaxTemp}" TextColor="Orange" FontSize="23" FontAttributes="Bold" VerticalOptions="Center"/>
                 <Label Text="/" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
-                <Label Text="{Binding Path=MinTemp}" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
+                <Label Text="{Binding Path=MinTemp}" TextColor="CadetBlue" FontSize="23" VerticalOptions="Center"/>
             </StackLayout>
-            <Label Text="{Binding Path=Description}" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-            <Label Text="June 15, 09:03 AM" TextColor="White" FontSize="10" HorizontalOptions="Center"/>
+            <Label Text="{Binding Path=Description}" TextColor="Black" FontAttributes="Italic" FontSize="16" HorizontalOptions="Center"/>
+            <Label Text="{Binding Path=TodayDate}" TextColor="White" Margin="0,10,0,0" FontSize="13" HorizontalOptions="Center"/>
         </StackLayout>
-        <Frame Grid.Row="1" BackgroundColor="white" BorderColor="Black" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">
+        <Frame Grid.Row="1" BackgroundColor="white" BorderColor="LightGray" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -65,18 +65,50 @@
                 </StackLayout>
             </Grid>
         </Frame>
-        <Grid  Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+        <ListView x:Name="WeatherForecastList" ItemsSource="{Binding Forecasts}" SeparatorVisibility="None"
+                  Grid.Row="2" Margin="20,10,0,-30" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell>
+                        <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
+                            <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Date}" TextColor="#757575" FontSize="16" VerticalOptions="Center" Margin="20,0"/>
+                                <Image Grid.Column="1" Source="{Binding Icon}" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label Text="{Binding Path=MaxTemp}" TextColor="Orange" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label Text="/" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Path=MinTemp}" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
+                                    <Label Text="°C" TextColor="Black" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Text="Hello there" HorizontalOptions="FillAndExpand">
-                
-            </Button>
-            <Button Grid.Column="1" Text="Add me to favorites">
+            <StackLayout Margin="30,0,0,0" Padding="0,0,20,0">
+                <Button Text="Next Day Forecast" CornerRadius="10">
 
-            </Button>
+                </Button>
+            </StackLayout>
+
+            <StackLayout Margin="0,0,30,0" Padding="20,0,0,0" Grid.Column="1">
+                <Button  Text="Add to favorites" CornerRadius="10">
+
+                </Button>
+            </StackLayout>
+
         </Grid>
     </Grid>
 </ContentPage>
