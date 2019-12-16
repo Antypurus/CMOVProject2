@@ -5,6 +5,9 @@
         public string Description { get; set; }
         
         public float Temperature { get; set; }
+        public float MinTemp { get; set; }
+
+        public float MaxTemp { get; set; }
 
         public float Humidity { get; set; }
 

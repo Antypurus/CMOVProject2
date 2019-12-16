@@ -53,9 +53,6 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.Unity.Forms">
-      <Version>7.2.0.1422</Version>
-    </PackageReference>
     <PackageReference Include="SkiaSharp">
       <Version>1.68.1</Version>
     </PackageReference>
@@ -93,7 +90,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\blue_overlay.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WeatherIO\WeatherIO.csproj">
       <Project>{4ECC56D3-3A51-45FC-9AAD-A0232C73FCBC}</Project>
@@ -147,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\wind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\colorful_overlay.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -6,15 +6,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WeatherIO.Backend;
 using Xamarin.Forms;
+using Business.WeatherAPI;
+using Domain.Models;
 
 namespace WeatherIO
 {
     public partial class MainPage : ContentPage
     {
-        string data = WeatherAPI.GetCityWeather("London", "uk").Temperature.ToString();
-        List<WeatherForecast> forecast = WeatherAPI.GetCityWheatherForecast("London","uk");
+        string data = OpenWeather.GetCityWeather("London", "uk").Temperature.ToString();
+        List<WeatherForecast> forecast = OpenWeather.GetCityWeatherForecast("London","uk");
 
         public MainPage()
         {

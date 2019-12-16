@@ -132,7 +132,9 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="bg.png" />
+    <Content Include="blue_overlay.jpg" />
     <Content Include="cloudiness.png" />
+    <Content Include="colorful_overlay.jpg" />
     <Content Include="dashboard.png" />
     <Content Include="grid.png" />
     <Content Include="gridColor.png" />
@@ -159,9 +161,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.Unity.Forms">
-      <Version>7.2.0.1422</Version>
-    </PackageReference>
     <PackageReference Include="SkiaSharp">
       <Version>1.68.1</Version>
     </PackageReference>

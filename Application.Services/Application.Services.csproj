@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Business.WeatherAPI\Business.WeatherAPI.csproj" />
   </ItemGroup>
 
