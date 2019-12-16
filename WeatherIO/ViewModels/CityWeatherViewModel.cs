@@ -213,7 +213,7 @@ namespace WeatherIO.ViewModels
             //Get Most Ocurring Icon For Most Accurate Weather Icon
             string getMostOcurringIcon(List<WeatherForecast> forecastsList)
             {
-                var query = forecastListOneDay.GroupBy(f => f.Icon)
+                var query = forecastsList.GroupBy(f => f.Icon)
                     .Select(group => new { icon = group.Key, Count = group.Count() })
                     .OrderByDescending(x => x.Count);
                 var item = query.First();
