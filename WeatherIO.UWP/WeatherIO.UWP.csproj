@@ -132,9 +132,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="bg.png" />
-    <Content Include="blue_overlay.jpg" />
     <Content Include="cloudiness.png" />
-    <Content Include="colorful_overlay.jpg" />
     <Content Include="dashboard.png" />
     <Content Include="grid.png" />
     <Content Include="gridColor.png" />
