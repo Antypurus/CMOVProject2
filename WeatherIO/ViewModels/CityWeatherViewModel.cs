@@ -22,6 +22,8 @@ namespace WeatherIO.ViewModels
         private string _maxTemp;
         private string _icon;
         private List<WeatherForecast> _forecasts;
+        private bool _favorited;
+        private bool _notFavorited;
 
         public CityWeatherViewModel(string city, string country)
         {
@@ -29,6 +31,7 @@ namespace WeatherIO.ViewModels
             City = city;
             Country = country;
             Today = DateTime.Today;
+            CheckFavorite();
         }
 
         public string Country { get; }
@@ -137,6 +140,26 @@ namespace WeatherIO.ViewModels
             set
             {
                 _forecasts = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public bool Favorited
+        {
+            get => _favorited;
+            set
+            {
+                _favorited = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public bool NotFavorited
+        {
+            get => _notFavorited;
+            set
+            {
+                _notFavorited = value;
                 NotifyPropertyChanged();
             }
         }
@@ -271,12 +294,24 @@ namespace WeatherIO.ViewModels
             Forecasts = finalForecasts;
         }
 
+        public void CheckFavorite()
+        {
+            if (App.Database.GetFavoriteAsync(City).Result != null)
+                Favorited = true;
+            else
+                Favorited = false;
+        }
+
         public void ToggleFavorite(object sender, System.EventArgs e)
         {
             var FavoriteCity = new FavoriteCity();
             FavoriteCity.City = City;
             FavoriteCity.Country = Country;
-            App.Database.SaveItemAsync(FavoriteCity);
+            if (App.Database.SaveItemAsync(FavoriteCity).Result >= 0)
+            {
+                Favorited = !Favorited;
+                NotFavorited = !Favorited;
+            }
         }
     }
 }

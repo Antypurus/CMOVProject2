@@ -133,10 +133,12 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="cloudiness.png" />
+    <AndroidResource Include="emptyStar.png" />
     <Content Include="humidity.png" />
     <Content Include="overlay.png" />
     <Content Include="pressure.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <AndroidResource Include="star.png" />
     <Content Include="wind.png" />
   </ItemGroup>
   <ItemGroup>
