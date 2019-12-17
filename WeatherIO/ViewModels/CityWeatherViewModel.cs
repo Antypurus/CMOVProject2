@@ -297,9 +297,15 @@ namespace WeatherIO.ViewModels
         public void CheckFavorite()
         {
             if (App.Database.GetFavoriteAsync(City).Result != null)
+            {
                 Favorited = true;
+                NotFavorited = !Favorited;
+            }
             else
+            {
                 Favorited = false;
+                NotFavorited = !Favorited;
+            }
         }
 
         public void ToggleFavorite(object sender, System.EventArgs e)
