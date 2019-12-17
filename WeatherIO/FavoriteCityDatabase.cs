@@ -25,13 +25,18 @@ namespace WeatherIO {
 		}
 
 		public Task<int> SaveItemAsync(FavoriteCity city) {
-			if (city.City != null)
-				return database.UpdateAsync(city);
+			var favoriteCity = GetFavoriteAsync(city.City).Result;
+			if (favoriteCity != null)
+				if(favoriteCity.City != null)
+					return DeleteItemAsync(favoriteCity);
+				else
+					return database.InsertAsync(city);
 			else
 				return database.InsertAsync(city);
 		}
 
-		public Task<int> DeleteItemAsync(FavoriteCity city) {
+		public Task<int> DeleteItemAsync(FavoriteCity city) 
+		{
 			return database.DeleteAsync(city);
 		}
 	}

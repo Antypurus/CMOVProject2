@@ -7,12 +7,18 @@ namespace WeatherIO.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CityWeatherView : ContentPage
     {
+        private readonly CityWeatherViewModel _vm;
         public CityWeatherView(string city, string country)
         {
             InitializeComponent();
-            var vm = new CityWeatherViewModel(city, country);
-            BindingContext = vm;
-            vm.UpdateWeather();
+            _vm = new CityWeatherViewModel(city, country);
+            BindingContext = _vm;
+            _vm.UpdateWeather();
+        }
+
+        private void ToggleFavorite(object sender, System.EventArgs e)
+        {
+            _vm.ToggleFavorite(sender, e);
         }
     }
 }

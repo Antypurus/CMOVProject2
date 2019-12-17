@@ -270,5 +270,13 @@ namespace WeatherIO.ViewModels
 
             Forecasts = finalForecasts;
         }
+
+        public void ToggleFavorite(object sender, System.EventArgs e)
+        {
+            var FavoriteCity = new FavoriteCity();
+            FavoriteCity.City = City;
+            FavoriteCity.Country = Country;
+            App.Database.SaveItemAsync(FavoriteCity);
+        }
     }
 }

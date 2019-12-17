@@ -25,6 +25,13 @@ namespace WeatherIO.Views
             base.OnDisappearing();
         }
 
+        protected override void OnAppearing()
+        {
+            var vm = new FavoritesListViewModel();
+            BindingContext = vm;
+            base.OnAppearing();
+        }
+
         async void OnItemAdded(object sender, EventArgs e)
         {
             var oldBinding = (FavoritesListViewModel)BindingContext;
@@ -42,7 +49,7 @@ namespace WeatherIO.Views
             {
                 var item = ((FavoriteCity)e.SelectedItem).Copy();
                 var list = ((FavoritesListViewModel)BindingContext).Favorites;
-                await Navigation.PushAsync(new CityWeatherView("Porto", "PT"));
+                await Navigation.PushAsync(new CityWeatherView(item.City, item.Country));
             }
         }
     }
