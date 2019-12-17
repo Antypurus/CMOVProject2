@@ -8,6 +8,11 @@
              Title="WeatherIO">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add New City" Clicked="ShowAllCities">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="add.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ListView x:Name="listView" Margin="20" ItemsSource="{Binding Favorites}" ItemSelected="OnListItemSelected">
