@@ -24,7 +24,7 @@ namespace WeatherIO.ViewModels
 
         private async void Initialize()
         {
-            List<FavoriteCity> list = await App.Database.GetFavoritesAsync();
+            List<FavoriteCity> list = await WeatherIO.App.Database.GetFavoritesAsync();
             Favorites = new ObservableCollection<FavoriteCity>(list);
         }
     }

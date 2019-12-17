@@ -6,8 +6,9 @@ namespace WeatherIO {
 	public class FavoriteCityDatabase {
 		readonly SQLiteAsyncConnection database;
 
-		public FavoriteCityDatabase(string dbPath) {
-			database = new SQLiteAsyncConnection(dbPath);
+		public FavoriteCityDatabase(string dbpath)
+		{
+			database = new SQLiteAsyncConnection(dbpath);
 			database.CreateTableAsync<FavoriteCity>().Wait();
 		}
 

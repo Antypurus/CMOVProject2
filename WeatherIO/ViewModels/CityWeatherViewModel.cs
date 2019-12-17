@@ -12,9 +12,6 @@ namespace WeatherIO.ViewModels
     public class CityWeatherViewModel : BaseViewModel
     {
         private readonly WeatherService _weatherService;
-        private readonly string _city;
-        private readonly string _country;
-        private readonly DateTime _today;
         private string _description;
         private string _temperature;
         private string _humidity;
@@ -29,18 +26,18 @@ namespace WeatherIO.ViewModels
         public CityWeatherViewModel(string city, string country)
         {
             _weatherService = new WeatherService();
-            _city = city;
-            _country = country;
-            _today = DateTime.Today;
+            City = city;
+            Country = country;
+            Today = DateTime.Today;
         }
 
-        public string Country => _country;
+        public string Country { get; }
 
-        public string City => _city;
+        public string City { get; }
 
         public string CityCountry => City + ", " + Country;
 
-        public DateTime Today => _today;
+        public DateTime Today { get; }
 
         public string TodayDate => Today.ToString("D");
 
@@ -176,23 +173,23 @@ namespace WeatherIO.ViewModels
             foreach (WeatherForecast forecast in weatherForecast)
             {
                 var dt = DateTime.ParseExact(forecast.Date, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                if ((todayOneDay - dt).TotalMinutes > 0)
+                if ((dt - todayOneDay).Days == 0)
                 {
                     forecastListOneDay.Add(forecast);
                 }
-                else if ((todayTwoDays - dt).TotalMinutes > 0)
+                else if ((dt - todayOneDay).Days == 1)
                 {
                     forecastListTwoDays.Add(forecast);
                 }
-                else if ((todayThreeDays - dt).TotalMinutes > 0)
+                else if ((dt - todayOneDay).Days == 2)
                 {
                     forecastListThreeDays.Add(forecast);
                 }
-                else if ((todayFourDays - dt).TotalMinutes > 0)
+                else if ((dt - todayOneDay).Days == 3)
                 {
                     forecastListFourDays.Add(forecast);
                 }
-                else if ((todayFiveDays - dt).TotalMinutes > 0)
+                else if ((dt - todayOneDay).Days == 4)
                 {
                     forecastListFiveDays.Add(forecast);
                 }
