@@ -68,8 +68,8 @@
         <ListView x:Name="WeatherForecastList" ItemsSource="{Binding Forecasts}" SeparatorVisibility="None"
                   Grid.Row="2" Margin="20,10,0,-30" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <ListView.ItemTemplate>
-                <DataTemplate >
-                    <ViewCell>
+                <DataTemplate>
+                    <ViewCell IsEnabled="False">
                         <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
                             <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                                 <Grid.ColumnDefinitions>

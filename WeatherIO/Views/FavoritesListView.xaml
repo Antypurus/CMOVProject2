@@ -20,8 +20,7 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding City}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-                        <Image Source="check.png" HorizontalOptions="End" IsVisible="{Binding Country}" />
+                        <Label Text="{Binding City}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" FontSize="20"/>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
