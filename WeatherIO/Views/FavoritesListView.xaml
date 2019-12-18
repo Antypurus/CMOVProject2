@@ -8,9 +8,9 @@
              Title="WeatherIO">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Show Cities" Clicked="ShowAllCities">
-            <ToolbarItem.Icon>
+            <ToolbarItem.Icon >
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="add.png" />
+                    <On Platform="UWP" Value="add.png"  />
                 </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>
