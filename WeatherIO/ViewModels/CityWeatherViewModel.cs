@@ -180,7 +180,12 @@ namespace WeatherIO.ViewModels
             Pressure = $"{weather.Pressure.ToString()} hpa";
             MinTemp = $"{weather.MinTemp.ToString()}°";
             MaxTemp = $"{weather.MaxTemp.ToString()}°";
-            Icon = "http://openweathermap.org/img/wn/" + weather.Icon + "@2x.png";
+
+            string iconUrl(string icon)
+            {
+                return "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+            }
+            Icon = iconUrl(weather.Icon);
 
             List<WeatherForecast> forecastListOneDay = new List<WeatherForecast>();
             List<WeatherForecast> forecastListTwoDays = new List<WeatherForecast>();
@@ -249,11 +254,6 @@ namespace WeatherIO.ViewModels
             string iconThreeDays = getMostOcurringIcon(forecastListThreeDays);
             string iconFourDays = getMostOcurringIcon(forecastListFourDays);
             string iconFiveDays = getMostOcurringIcon(forecastListFiveDays);
-
-            string iconUrl(string icon)
-            {
-                return "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-            }
 
             List<WeatherForecast> finalForecasts = new List<WeatherForecast>();
 
