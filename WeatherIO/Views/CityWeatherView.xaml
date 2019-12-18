@@ -104,8 +104,9 @@
             </StackLayout>
 
             <StackLayout Margin="0,0,30,0" Padding="20,0,0,0" Grid.Column="1">
-                <Button  Text="Add to favorites" CornerRadius="10" Clicked="ToggleFavorite" >
-
+                <Button  Text="Add to favorites" CornerRadius="10" Clicked="ToggleFavorite" IsVisible="{Binding NotFavorited}">
+                </Button>
+                <Button  Text="Remove from favorites" CornerRadius="10" Clicked="ToggleFavorite" IsVisible="{Binding Favorited}">
                 </Button>
             </StackLayout>
 
