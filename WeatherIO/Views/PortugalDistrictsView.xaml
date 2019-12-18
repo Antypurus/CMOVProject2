@@ -6,28 +6,15 @@
              mc:Ignorable="d"
              x:Class="WeatherIO.Views.PortugalDistrictsView"
              Title="Districts of Portugal">
-    <ContentPage.Content>
-        <StackLayout>
-            <ListView ItemsSource="{Binding Districts}" SeparatorVisibility="None"
-                   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                      HeightRequest="80" ItemSelected="CitySelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <ViewCell>
-                            <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
-                                <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding Item1}" TextColor="#757575" FontSize="16" VerticalOptions="Center" Margin="20,0"/>
-                                </Grid>
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>
+    <ListView x:Name="listView" Margin="20" ItemsSource="{Binding Districts}" ItemSelected="CitySelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding Item1}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" FontSize="20"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

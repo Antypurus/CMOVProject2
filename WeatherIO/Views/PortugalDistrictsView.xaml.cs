@@ -22,6 +22,7 @@ namespace WeatherIO.Views
         {
             if (e.SelectedItem != null)
             {
+                ((ListView)sender).SelectedItem = null;
                 var item = ((Tuple<string, string>)e.SelectedItem);
                 await Navigation.PushAsync(new CityWeatherView(item.Item1, item.Item2));
             }
