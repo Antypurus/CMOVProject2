@@ -31,7 +31,7 @@ namespace Business.WeatherAPI
             weather.Pressure = (float)main.GetValue("pressure");
             weather.Humidity = (float)main.GetValue("humidity");
             weather.WindSpeed = (float)wind.GetValue("speed");
-            weather.WindDegree = (float)wind.GetValue("deg");
+            //weather.WindDegree = (float)wind.GetValue("deg");
 
             return weather;
         }
