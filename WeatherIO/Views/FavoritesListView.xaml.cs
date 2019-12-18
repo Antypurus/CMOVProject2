@@ -32,12 +32,6 @@ namespace WeatherIO.Views
             base.OnAppearing();
         }
 
-        async void OnItemAdded(object sender, EventArgs e)
-        {
-            var oldBinding = (FavoritesListViewModel)BindingContext;
-            await Navigation.PushAsync(new CityWeatherView("Porto", "PT"));
-        }
-
         async void ShowAllCities(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PortugalDistrictsView());

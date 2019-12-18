@@ -7,7 +7,7 @@
              x:Class="WeatherIO.Views.FavoritesListView"
              Title="WeatherIO">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add New City" Clicked="ShowAllCities">
+        <ToolbarItem Text="Show Cities" Clicked="ShowAllCities">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="UWP" Value="add.png" />
@@ -15,15 +15,22 @@
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView" Margin="20" ItemsSource="{Binding Favorites}" ItemSelected="OnListItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding City}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" FontSize="20"/>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout>
+        <Frame IsVisible="{Binding EmptyFavoritesList}" CornerRadius="10" BackgroundColor="White" BorderColor="LightGray" Margin="20,20,20,0">
+            <Label FontSize="20" Text="Your favorites list is empty. &#x0a; &#x0a;You can search for a city to add, on the upper right corner button" 
+           TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            </Label>
+        </Frame>
+        <ListView x:Name="listView" Margin="20" ItemsSource="{Binding Favorites}" ItemSelected="OnListItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding City}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" FontSize="20"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
