@@ -16,11 +16,13 @@ namespace WeatherIO
             Resources.Add("purple", Color.FromHex("7454C7"));
             Resources.Add("primaryDarkGreen", Color.FromHex("6FA22E"));
 
-            var nav = new NavigationPage(new FavoritesListView());
-            nav.BarBackgroundColor = (Color)App.Current.Resources["purple"];
-            nav.BarTextColor = Color.White;
+            //var nav = new NavigationPage(new FavoritesListView());
+            //nav.BarBackgroundColor = (Color)App.Current.Resources["purple"];
+            //nav.BarTextColor = Color.White;
 
-            MainPage = nav;
+            MainPage page = new MainPage();
+
+            MainPage = page;
         }
 
         public static FavoriteCityDatabase Database
