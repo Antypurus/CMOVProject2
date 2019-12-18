@@ -1,4 +1,6 @@
-﻿namespace Domain.Models
+﻿using SkiaSharp;
+
+namespace Domain.Models
 {
     public class WeatherForecast 
     {
@@ -15,5 +17,7 @@
         public float Humidity { get; set; }
 
         public string Icon { get; set; }
+
+        public SKBitmap WeatherIcon {get; set;}
     }
 }

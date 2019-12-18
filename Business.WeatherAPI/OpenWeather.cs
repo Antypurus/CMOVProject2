@@ -1,6 +1,10 @@
 ﻿using Domain.Models;
 using Newtonsoft.Json.Linq;
+using SkiaSharp;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Business.WeatherAPI
 {
@@ -63,11 +67,29 @@ namespace Business.WeatherAPI
                 {
                     weatherForecast.Icon = (string)item.GetValue("icon");
                 }
+                weatherForecast.WeatherIcon = GetWeatherIconAsync(weatherForecast.Icon);
 
                 forecast_result.Add(weatherForecast);
             }
 
             return forecast_result;
+        }
+
+        public static SKBitmap GetWeatherIconAsync(string weathericon)
+        {
+            string uri = "http://openweathermap.org/img/wn/" + weathericon + "@2x.png";
+            SKBitmap bitmap = null;
+
+            HttpClient client = new HttpClient();
+            Stream stream = client.GetStreamAsync(uri).Result;
+            MemoryStream memStream = new MemoryStream();
+
+            stream.CopyToAsync(memStream).Wait();
+            memStream.Seek(0, SeekOrigin.Begin);
+
+            bitmap = SKBitmap.Decode(memStream);
+
+            return bitmap;
         }
 
     }
