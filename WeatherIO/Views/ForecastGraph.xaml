@@ -5,14 +5,12 @@
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WeatherIO.ForecastGraph">
-
+             x:Class="WeatherIO.ForecastGraph"
+             Title="Weather Forecast Graph">
+    
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!"/>
-        
         <skia:SKCanvasView PaintSurface="OnCanvasViewPaintSurface">
-            
+
         </skia:SKCanvasView>
     </StackLayout>
 

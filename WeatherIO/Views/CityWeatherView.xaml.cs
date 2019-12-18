@@ -20,5 +20,10 @@ namespace WeatherIO.Views
         {
             _vm.ToggleFavorite(sender, e);
         }
+
+        private void GoToGraph(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ForecastGraph(_vm.City,_vm.Country));
+        }
     }
 }

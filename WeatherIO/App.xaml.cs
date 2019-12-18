@@ -20,9 +20,7 @@ namespace WeatherIO
             nav.BarBackgroundColor = (Color)App.Current.Resources["purple"];
             nav.BarTextColor = Color.White;
 
-            var main = new ForecastGraph();
-
-            MainPage = main;
+            MainPage = nav;
         }
 
         public static FavoriteCityDatabase Database

@@ -14,11 +14,14 @@ namespace WeatherIO
 {
     public partial class ForecastGraph : ContentPage
     {
-        List<WeatherForecast> forecast = OpenWeather.GetCityWeatherForecast("London", "uk");
+        List<WeatherForecast> forecast;
 
-        public ForecastGraph()
+        public ForecastGraph(string city, string country)
         {
             InitializeComponent();
+
+            Title = ""+city+","+country+" Forecast Graph";
+            this.forecast = OpenWeather.GetCityWeatherForecast(city, country);
 
             SKCanvasView canvasView = new SKCanvasView();
             canvasView.PaintSurface += OnCanvasViewPaintSurface;

@@ -77,7 +77,7 @@ namespace Business.WeatherAPI
 
         public static SKBitmap GetWeatherIconAsync(string weathericon)
         {
-            string uri = "http://openweathermap.org/img/wn/" + weathericon + "@2x.png";
+            string uri = "https://openweathermap.org/img/wn/" + weathericon + "@2x.png";
             SKBitmap bitmap = null;
 
             HttpClient client = new HttpClient();

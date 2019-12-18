@@ -170,6 +170,7 @@ namespace WeatherIO.ViewModels
         {
             var weather = _weatherService.GetCityWeather(City, Country);
             var weatherForecast = _weatherService.GetCityWeatherForecast(City, Country);
+            //_forecasts = weatherForecast;
 
             Description = weather.Description.ToString();
             Temperature = weather.Temperature.ToString();
