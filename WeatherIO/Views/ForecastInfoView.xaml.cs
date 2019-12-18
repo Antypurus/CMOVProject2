@@ -1,31 +1,28 @@
-﻿using SkiaSharp;
+﻿using Domain.Models;
+using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WeatherIO.ViewModels;
 using Xamarin.Forms;
-using Business.WeatherAPI;
-using Domain.Models;
+using Xamarin.Forms.Xaml;
 
-namespace WeatherIO
+namespace WeatherIO.Views
 {
-    public partial class ForecastGraph : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ForecastInfoView : ContentPage
     {
-        List<WeatherForecast> forecast;
+        private readonly ForecastInfoViewModel _vm;
 
-        public ForecastGraph(string city, string country)
+        public ForecastInfoView(string city, string country)
         {
             InitializeComponent();
-
-            Title = ""+city+","+country+" Forecast Graph";
-            this.forecast = OpenWeather.GetCityWeatherForecast(city, country);
+            _vm = new ForecastInfoViewModel(city, country);
+            BindingContext = _vm;
 
             SKCanvasView canvasView = new SKCanvasView();
             canvasView.PaintSurface += OnCanvasViewPaintSurface;
-            Content = canvasView;
+            CanvasView = canvasView;
         }
 
         private struct Point
@@ -57,14 +54,14 @@ namespace WeatherIO
             return ret;
         }
 
-        void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
+        public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;
             SKSurface surface = args.Surface;
             SKCanvas canvas = surface.Canvas;
 
             const int offset = 50;
-            List<Point> points = CalculateForecastPointPositions(this.forecast, info.Height - offset, info.Width - offset);
+            List<Point> points = CalculateForecastPointPositions(_vm.ForecastsIntervals, info.Height - offset, info.Width - offset);
 
             SKPath path = new SKPath();
             for (int i = 0; i < points.Count - 1; ++i)
@@ -115,7 +112,7 @@ namespace WeatherIO
             //draw circle in point positions
             for (int i = 0; i < points.Count; ++i)
             {
-                double averageTemperature = (forecast[i].MinTemp + forecast[i].MaxTemp) / 2.0;
+                double averageTemperature = (_vm.ForecastsIntervals[i].MinTemp + _vm.ForecastsIntervals[i].MaxTemp) / 2.0;
                 const int drawOffset = 10;
                 const int drawOffsetCorrection = 5;
                 const int iconSize = 50;
@@ -127,14 +124,15 @@ namespace WeatherIO
 
                 canvas.DrawText("" + averageTemperature + "ºC", points[i].x + offset, info.Height - points[i].y - offset - drawOffset, text);
 
-                string time = forecast[i].Date.Split(null)[1];
+                string time = _vm.ForecastsIntervals[i].Date.Split(null)[1];
                 canvas.DrawText(time, points[i].x + offset / 2, info.Height - 1 - offset + drawOffset + drawOffsetCorrection, text);
 
                 SKBitmap bitmap = new SKBitmap(iconSize, iconSize);
-                forecast[i].WeatherIcon.Resize(bitmap, SKBitmapResizeMethod.Box);
+                _vm.ForecastsIntervals[i].WeatherIcon.Resize(bitmap, SKBitmapResizeMethod.Box);
                 SKPoint iconCoord = new SKPoint(points[i].x + offset / 2, info.Height - points[i].y - offset + drawOffset / 2);
                 canvas.DrawBitmap(bitmap, iconCoord);
             }
         }
+
     }
 }

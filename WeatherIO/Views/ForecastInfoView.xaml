@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WeatherIO.Views.ForecastInfoView"
+             Title="Weather Forecast Graph">
+
+    <StackLayout>
+        <skia:SKCanvasView Grid.Row="1" x:Name="CanvasView" PaintSurface="OnCanvasViewPaintSurface" HorizontalOptions="Fill"
+                           VerticalOptions="Start"
+                           HeightRequest="300">
+
+            </skia:SKCanvasView>
+        <ListView x:Name="WeatherForecastList" ItemsSource="{Binding ForecastsIntervals}" SeparatorVisibility="None"
+                  Grid.Row="2" Margin="20,10,0,-30" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell IsEnabled="False">
+                        <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
+                            <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Date}" TextColor="#757575" FontSize="16" VerticalOptions="Center" Margin="20,0"/>
+                                <Image Grid.Column="1" Source="{Binding Icon}" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label Text="{Binding Path=MaxTemp}" TextColor="Orange" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label Text="/" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Path=MinTemp}" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
+                                    <Label Text="°C" TextColor="Black" FontSize="15" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Path=Humidity, StringFormat='{0:N}%'}" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

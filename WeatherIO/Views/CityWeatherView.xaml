@@ -98,7 +98,7 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout Margin="30,0,0,0" Padding="0,0,20,0">
-                <Button Text="Forecast Graph" CornerRadius="10" Clicked="GoToGraph">
+                <Button Text="Forecast Information" CornerRadius="10" Clicked="GoToGraph">
 
                 </Button>
             </StackLayout>

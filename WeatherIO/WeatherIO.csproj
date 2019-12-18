@@ -28,8 +28,8 @@
     <Compile Update="Views\CityWeatherView.xaml.cs">
       <DependentUpon>CityWeatherView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ForecastGraph.xaml.cs">
-      <DependentUpon>ForecastGraph.xaml</DependentUpon>
+    <Compile Update="Views\ForecastInfoView.xaml.cs">
+      <DependentUpon>ForecastInfoView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
