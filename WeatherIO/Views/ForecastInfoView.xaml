@@ -15,7 +15,7 @@
 
             </skia:SKCanvasView>
         <ListView x:Name="WeatherForecastList" ItemsSource="{Binding ForecastsIntervals}" SeparatorVisibility="None"
-                  Grid.Row="2" Margin="20,10,0,-30" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                  Grid.Row="2" Margin="0,0,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell IsEnabled="False">
@@ -23,17 +23,18 @@
                             <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Date}" TextColor="#757575" FontSize="16" VerticalOptions="Center" Margin="20,0"/>
+                                <Label Text="{Binding Date}" TextColor="#757575" FontSize="8" VerticalOptions="Center" Margin="20,0"/>
                                 <Image Grid.Column="1" Source="{Binding Icon}" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
-                                    <Label Text="{Binding Path=MaxTemp}" TextColor="Orange" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
-                                    <Label Text="/" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
-                                    <Label Text="{Binding Path=MinTemp}" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Path=MaxTemp}" TextColor="Orange" FontSize="15" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label Text="/" TextColor="CadetBlue" FontSize="15" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Path=MinTemp}" TextColor="CadetBlue" FontSize="15" VerticalOptions="Center"/>
                                     <Label Text="°C" TextColor="Black" FontSize="15" VerticalOptions="Center"/>
-                                    <Label Text="{Binding Path=Humidity, StringFormat='{0:N}%'}" TextColor="CadetBlue" FontSize="20" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Path=Humidity, StringFormat='{0:N}%'}" TextColor="CadetBlue" FontSize="15" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Path=WindSpeed, StringFormat='{0:N}m/s'}" TextColor="CadetBlue" FontSize="15" VerticalOptions="Center"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
