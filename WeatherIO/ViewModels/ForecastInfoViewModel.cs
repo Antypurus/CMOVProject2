@@ -38,7 +38,9 @@ namespace WeatherIO.ViewModels
             {
                 foreach(WeatherForecast forecast in _forecast)
                 {
-                   forecast.Icon = "https://openweathermap.org/img/wn/" + forecast.Icon + "@2x.png";
+                    forecast.Icon = "https://openweathermap.org/img/wn/" + forecast.Icon + "@2x.png";
+                    if(forecast.Date.Split(null).Length > 1)
+                        forecast.Date = forecast.Date.Split(null)[1];
                 }
                 return _forecast.Take(8).ToList();
             }

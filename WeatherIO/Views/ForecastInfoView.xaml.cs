@@ -124,12 +124,12 @@ namespace WeatherIO.Views
 
                 canvas.DrawText("" + averageTemperature + "ºC", points[i].x + offset, info.Height - points[i].y - offset - drawOffset, text);
 
-                string time = _vm.ForecastsIntervals[i].Date.Split(null)[1];
+                string time = _vm.ForecastsIntervals[i].Date;
                 canvas.DrawText(time, points[i].x + offset / 2, info.Height - 1 - offset + drawOffset + drawOffsetCorrection, text);
 
                 SKBitmap bitmap = new SKBitmap(iconSize, iconSize);
                 _vm.ForecastsIntervals[i].WeatherIcon.Resize(bitmap, SKBitmapResizeMethod.Box);
-                SKPoint iconCoord = new SKPoint(points[i].x + offset / 2, info.Height - points[i].y - offset - drawOffset * 2);
+                SKPoint iconCoord = new SKPoint(points[i].x + offset / 2, info.Height - points[i].y - offset + drawOffset / 2);
                 canvas.DrawBitmap(bitmap, iconCoord);
             }
         }
