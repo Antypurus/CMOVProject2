@@ -29,32 +29,32 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                                        <Image Source="{Binding Icon}" HeightRequest="50" HorizontalOptions="Center"/>
+                                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding Path=Date}" HorizontalOptions="Center" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                                     <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Max Temp" TextColor="Black" FontSize="11" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Path=MaxTemp, StringFormat='{0:N}°C'}" TextColor="Orange" FontSize="15" FontAttributes="Bold" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Path=MaxTemp, StringFormat='{0}°C'}" HorizontalOptions="Center" TextColor="Orange" FontSize="15" FontAttributes="Bold" VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                                     <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Min Temp" TextColor="Black" FontSize="11" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Path=MinTemp, StringFormat='{0:N}°C' }" TextColor="CadetBlue" FontSize="15" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Path=MinTemp, StringFormat='{0}°C' }"  HorizontalOptions="Center" TextColor="CadetBlue" FontSize="15" VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Grid.Column="3" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                                     <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Humidity" TextColor="Black" FontSize="11" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Path=Humidity, StringFormat='{0:N}%'}" TextColor="Blue" FontSize="15" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Path=Humidity, StringFormat='{0}%'}"  HorizontalOptions="Center" TextColor="Blue" FontSize="15" VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Grid.Column="4" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                                     <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                         <Label Text="Wind Speed" TextColor="Black" FontSize="11" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Path=WindSpeed, StringFormat='{0:N}m/s'}" TextColor="Green" FontSize="15" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Path=WindSpeed, StringFormat='{0:N}m/s'}"  HorizontalOptions="Center" TextColor="Green" FontSize="15" VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                             </Grid>
