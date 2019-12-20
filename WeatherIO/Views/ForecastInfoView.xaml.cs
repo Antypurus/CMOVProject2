@@ -129,7 +129,7 @@ namespace WeatherIO.Views
 
                 SKBitmap bitmap = new SKBitmap(iconSize, iconSize);
                 _vm.ForecastsIntervals[i].WeatherIcon.Resize(bitmap, SKBitmapResizeMethod.Box);
-                SKPoint iconCoord = new SKPoint(points[i].x + offset / 2, info.Height - points[i].y - offset + drawOffset / 2);
+                SKPoint iconCoord = new SKPoint(points[i].x + offset / 2, info.Height - points[i].y - offset - drawOffset * 2);
                 canvas.DrawBitmap(bitmap, iconCoord);
             }
         }
